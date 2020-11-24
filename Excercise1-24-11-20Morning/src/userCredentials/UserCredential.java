@@ -1,6 +1,6 @@
 package userCredentials;
 
-import java.util.List;
+
 
 public class UserCredential {
 	String id;
