@@ -1,4 +1,4 @@
-package com.org;
+package com.org_24_11;
 
 public class DBConfig {
 	

@@ -1,6 +1,6 @@
-package com.org;
+package com.org_24_11;
 
-public class EmployeeDao{
+public class EmployeeDao implements Dao{
 	
 	
 	
