@@ -1,16 +1,14 @@
 package com.org_25_11_3;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
+@Component
 public class DBconfig {
 
 	String Dburl;
 	String Dbname;
 	String Dbpassword;
 	
-	
-
 	@Override
 	public String toString() {
 		return "DBconfig [Dburl=" + Dburl + ", Dbname=" + Dbname + ", Dbpassword=" + Dbpassword + "]";
