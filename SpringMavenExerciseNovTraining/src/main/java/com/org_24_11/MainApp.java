@@ -11,7 +11,7 @@ public class MainApp {
 		// reads the xml file and creates all the objects of the classes you have
 		// configured
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeService service = (EmployeeService) context.getBean("service");
+		EmployeeServiceImpl service = (EmployeeServiceImpl) context.getBean("service");
 		service.storeEmployee();
 	
 

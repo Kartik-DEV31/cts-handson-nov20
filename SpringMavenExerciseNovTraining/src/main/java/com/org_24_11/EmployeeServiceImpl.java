@@ -1,16 +1,16 @@
 package com.org_24_11;
 
-public class EmployeeService implements Service {
+public class EmployeeServiceImpl implements Service {
 	
-EmployeeDao dao ;
+EmployeeDaoImpl dao ;
 
 
-public EmployeeDao getDao() {
+public EmployeeDaoImpl getDao() {
 	return dao;
 }
 
 
-public void setDao(EmployeeDao dao) {
+public void setDao(EmployeeDaoImpl dao) {
 	this.dao = dao;
 }
 
