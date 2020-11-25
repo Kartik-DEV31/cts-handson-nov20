@@ -6,13 +6,38 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+<!-- Using Setter Injection -->
 	<bean id = "service" class = "com.org_24_11.EmployeeServiceImpl" >
  	<property name="dao" ref="da"></property>
-	
 	</bean>
 	  <bean id = "da" class = "com.org_24_11.EmployeeDaoImpl">
+		</bean>	
+	
+	<!--Using Autowired -->
+	<bean id = "service2" class = "com.org_25_11.EmployeeServiceImpl" autowire="byType" >
+ 	<property name="dao2" ref="da2"></property>
+	</bean>
+	  <bean id = "da2" class = "com.org_25_11.EmployeeDaoImpl" >
 	
 	</bean>	
+	
+	<!-- Using Annotations -->
+	<context:component-scan base-package="com.org_25_11_2"></context:component-scan>
+	
+	
+	<!-- Configuring DBconfig in XML and injecting in EmployeeDaoImpl2 using Autowire  -->
+	<context:component-scan base-package="com.org_25_11_3"></context:component-scan>
+	
+	
+	<bean id = "dbconfig" class = "com.org_25_11_3.DBconfig">
+	<!-- String Dburl;
+	String Dbname;
+	String Dbpassword; -->
+	<property name="Dburl" value="www.xyz.com"></property>
+	<property name="Dbname" value="Database"></property>
+	<property name="Dbpassword" value="123456789"></property>
+	</bean>
+	
 
 
 </beans>
