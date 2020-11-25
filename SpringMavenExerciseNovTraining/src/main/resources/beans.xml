@@ -27,8 +27,6 @@
 	
 	<!-- Configuring DBconfig in XML and injecting in EmployeeDaoImpl2 using Autowire  -->
 	<context:component-scan base-package="com.org_25_11_3"></context:component-scan>
-	
-	
 	<bean id = "dbconfig" class = "com.org_25_11_3.DBconfig">
 	<!-- String Dburl;
 	String Dbname;
@@ -37,6 +35,14 @@
 	<property name="Dbname" value="Database"></property>
 	<property name="Dbpassword" value="123456789"></property>
 	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 
