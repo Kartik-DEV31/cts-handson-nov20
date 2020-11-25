@@ -9,7 +9,7 @@ public class ThreadMain {
 		Thread t2 = new Thread(counter);
 		
 		
-		t1.start();
+	  t1.start();
 		t2.start();
 		
 		System.out.println("Program Ended.");
