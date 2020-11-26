@@ -44,7 +44,20 @@ public class SortMain {
 		};
 		Collections.sort(list1, c1);
 		System.out.println(list1);
-
+		
+		// Using comparator Using function interface and lambda expression sorting name
+		System.out.println("Using Comparato - function interface and lambda expressionr -  Aescending -Names");
+		Comparator<Shop> c2 = (s1 , s2)-> s1.getName().compareTo(s2.getName());
+		Collections.sort(list1,c2);
+		System.out.println(list1);
+		
+		// Using comparator Using function interface and lambda expression sorting name -NextLevel
+				System.out.println("Using Comparato - function interface and lambda expressions -Next Level -  Descending -Names");
+				Collections.sort(list1,(s1,s2)->s2.getName().compareTo(s1.getName()));
+				System.out.println(list1);
+		
+		
+		
 	}
 
 }
