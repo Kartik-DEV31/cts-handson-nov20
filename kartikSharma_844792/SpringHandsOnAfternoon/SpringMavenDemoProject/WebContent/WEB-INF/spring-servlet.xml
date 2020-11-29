@@ -12,7 +12,7 @@
 
 	<context:component-scan base-package="demo"></context:component-scan>
 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven /> <!-- for using annotations like @Controller -->
 	<mvc:default-servlet-handler/><!--Helps to load Index.html Automatically-->
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
