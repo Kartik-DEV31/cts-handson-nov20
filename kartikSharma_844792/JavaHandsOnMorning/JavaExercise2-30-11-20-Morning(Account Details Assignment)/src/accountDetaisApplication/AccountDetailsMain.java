@@ -9,6 +9,7 @@ public class AccountDetailsMain  {
 	public static void main(String... strings) {
 
 		Scanner scan = new Scanner(System.in);
+		Scanner scan2 = new Scanner(System.in);
 		String choice = null;
 		int n = 0;
 		AccountDetailsService service = new AccountDetailsServiceImpl();
@@ -88,7 +89,7 @@ public class AccountDetailsMain  {
 			}
 
 			System.out.print("---Want to continue (y or n) :---");
-			Scanner scan2 = new Scanner(System.in);
+		
 			choice = scan2.nextLine().toLowerCase();
 			
 
