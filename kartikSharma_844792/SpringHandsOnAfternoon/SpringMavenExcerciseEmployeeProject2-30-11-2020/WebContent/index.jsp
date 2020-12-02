@@ -14,7 +14,24 @@
 <form id="allEmployee" action="employeeDb" method="get">
  <button><cite>All EMPLOYEES</cite></button>
    </form>
+ <br>
 <br>
+<hr>
+<form id="addEmployee" action="addEmployee" method="post">
+<cite>ADD EMPLOYEE</cite><br><br>
+    <label>Employee Id : </label>
+    <input type="number" name="id">
+    <br/>
+    <label>Employee Name : </label>
+    <input type="text" name="name">
+    <br/>
+    <label>Employee Salary : </label>
+    <input type="number" name="salary">
+    <br/>
+    <button>Submit</button>
+     <b>${exceptionMsg0}</b>
+</form>
+<br>  
 <br>
 <hr>
 <form id="findEmployee" action="findEmployee" method="get">
@@ -23,7 +40,7 @@
     <input type="number" name="id">
     <br/>
     <button>Submit</button>
-     <b>${exceptionMsg}</b>
+     <b>${exceptionMsg1}</b>
 </form>
 <br>
 <hr>

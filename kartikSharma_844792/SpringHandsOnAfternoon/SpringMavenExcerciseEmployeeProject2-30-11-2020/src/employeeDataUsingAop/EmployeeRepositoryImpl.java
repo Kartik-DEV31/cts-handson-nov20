@@ -102,4 +102,44 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	}
 
+	@Override
+	public void addEmplpoyee(int id, String name, Double salary) throws Exception {
+	
+		
+		
+		String SQuery = "select * from employee where id = ?";
+		List<EmployeePojo> e = jdbcTemplate.query(SQuery, new Object[] { id }, new RowMapper<EmployeePojo>() {
+
+			public EmployeePojo mapRow(ResultSet rs, int rowNum) throws SQLException {
+				EmployeePojo dao = new EmployeePojo(null, null, null);
+				dao.setId(rs.getInt("id"));
+				dao.setName(rs.getString("name"));
+				dao.setSalary(rs.getDouble("salary"));
+				return dao;
+			}
+		});
+		
+		
+		
+		
+		int i=0;
+		
+		if(e.size()!=0)
+		{
+			throw new Exception("EmployeeAlreadyPresentException");
+			
+		}
+		
+		String insertQuery = "insert into employee(id , name , salary) values (? , ? , ?) ";
+	 i = jdbcTemplate.update(insertQuery,id,name,salary);
+	
+	if (i==0)
+	{
+		throw new RuntimeException("DataBaseDataEntryException");
+		
+	}
+		
+		
+	}
+
 }

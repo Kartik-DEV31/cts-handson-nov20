@@ -19,22 +19,30 @@ public class AspectImpl implements AspectInterface {
 	@Override
 	@After("execution( * employeeDataUsingAop.EmployeeService.findAllEmployee())")
 	public void findAllEmployee() {
-		System.out.println("All EmployeeData Retrieved");
+		System.out.println("findAllEmployee() called");
 
 	}
 
 	@Override
 	@After("execution( * employeeDataUsingAop.EmployeeService.findEmployee(int))")
 	public void findEmployee() {
-		System.out.println("EmployeeData Retrieved");
+		System.out.println("findEmployee() called");
 
 	}
 
 	@Override
 	@After("execution( * employeeDataUsingAop.EmployeeService.findEmployee(int,String))")
 	public void removeEmployee() {
-		System.out.println("EmployeeData Retrieved");
+		System.out.println("removeEmployee() called");
 
 	}
+	
+	@Override
+	@After("execution( * employeeDataUsingAop.EmployeeService.addEmployee(int , String , Double ))")
+	public void addEmployee() {
+		System.out.println("addEmployee() called");
+
+	}	
+	
 
 }

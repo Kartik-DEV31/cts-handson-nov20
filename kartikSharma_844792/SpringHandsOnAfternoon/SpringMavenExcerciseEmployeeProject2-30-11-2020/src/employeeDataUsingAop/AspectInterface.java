@@ -10,4 +10,6 @@ public interface AspectInterface {
 
 	void removeEmployee();
 
+	void addEmployee();
+
 }

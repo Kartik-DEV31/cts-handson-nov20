@@ -29,4 +29,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return repository.removeEmployee(id, name);
 	}
 
+	@Override
+	public void addEmployee(int id, String name, Double salary) throws Exception {
+		
+		repository.addEmplpoyee(id,name,salary);
+		
+	}
+
 }

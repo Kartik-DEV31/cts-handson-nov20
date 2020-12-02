@@ -10,4 +10,6 @@ public interface EmployeeService {
 
 	List<EmployeePojo> removeEmployee(int id, String name) throws Exception;
 
+	void addEmployee(int id, String name, Double salary) throws Exception;
+
 }
