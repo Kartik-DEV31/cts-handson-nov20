@@ -16,7 +16,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Optional<EmployeePojo> findEmployee(int id) {
+	public Optional<EmployeePojo> findEmployee(int id) throws EmployeeNotFoundException {
+
+		if (dao.findEmployee(id).isEmpty())
+			throw new EmployeeNotFoundException("Employee Does Not Exist");
 
 		return dao.findEmployee(id);
 
@@ -31,27 +34,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public EmployeePojo updateEmployee(Integer id, String name, Double salary) {
+	public EmployeePojo updateEmployee(Integer id, Double salary) throws EmployeeNotFoundException {
 
-		Optional<EmployeePojo> employeecheck = dao.findEmployee(id);
-		if (employeecheck.isEmpty())
-			throw new RuntimeException("EmployeeNotExistException");
+		Optional<EmployeePojo> employee = findEmployee(id);
 
-		EmployeePojo employee = dao.updateEmployee(id, name, salary);
-		return employee;
+		EmployeePojo employeeUpdate = dao.updateEmployee(id, employee.get().getName(), salary);
+		return employeeUpdate;
 
 	}
 
 	@Override
-	public EmployeePojo deleteEmployee(Integer id) {
+	public EmployeePojo deleteEmployee(Integer id) throws EmployeeNotFoundException {
 
-		Optional<EmployeePojo> employeecheck = dao.findEmployee(id);
-		if (employeecheck.isEmpty())
-			throw new RuntimeException("EmployeeNotExistException");
+		Optional<EmployeePojo> employeecheck = findEmployee(id);
 
 		dao.deleteEmployee(id);
-
 		return null;
+
 	}
 
 }

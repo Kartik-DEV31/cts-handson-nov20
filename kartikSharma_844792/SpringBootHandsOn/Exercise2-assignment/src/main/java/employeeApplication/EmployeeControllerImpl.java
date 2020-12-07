@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,12 +28,25 @@ public class EmployeeControllerImpl implements EmployeeController {
 	}
 
 	@GetMapping(value = "/findEmployee/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<EmployeePojo> findEmployee(@PathVariable int id) {
+	public ResponseEntity<Object> findEmployee(@PathVariable int id) {
+		ResponseEntity<Object> empResponse = null;
 
-		if (service.findEmployee(id).isEmpty())
-			throw new RuntimeException("EmployeeNotExistException");
+		Optional<EmployeePojo> employee = null;
+		try {
 
-		return service.findEmployee(id);
+			employee = service.findEmployee(id);
+			empResponse = ResponseEntity.status(200).body(employee);
+
+		} catch (EmployeeNotFoundException e) {
+			ExceptionResponse eR = new ExceptionResponse();
+			eR.setStatusCode(404);
+			eR.setExceptionMessage(e.getMessage());
+			// System.out.println("Exception Code : "+eR.getStatusCode()+" Exception : "+
+			// eR.getExceptionMessage());
+			empResponse = ResponseEntity.status(eR.getStatusCode()).body(eR);
+		}
+
+		return empResponse;
 
 	}
 
@@ -49,20 +63,47 @@ public class EmployeeControllerImpl implements EmployeeController {
 
 	// to change/update use put mapping.
 	@PutMapping(value = "/updateEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public EmployeePojo updateEmployee(@RequestBody EmployeePojo request) {
+	public ResponseEntity<Object> updateEmployee(@RequestBody EmployeePojo request) {
 
-		Optional<EmployeePojo> empData = findEmployee(request.getId());
+		ResponseEntity<Object> empResponse = null;
 
-		EmployeePojo employee = service.updateEmployee(request.getId(), empData.get().getName(), request.getSalary());
-		return employee;
+		EmployeePojo employee = null;
+		try {
+			employee = service.updateEmployee(request.getId(), request.getSalary());
+			String msg = "successfully updated";
+			empResponse = ResponseEntity.status(200).body(msg);
+
+		} catch (EmployeeNotFoundException e) {
+			ExceptionResponse eR = new ExceptionResponse();
+			eR.setStatusCode(404);
+			eR.setExceptionMessage(e.getMessage());
+			empResponse = ResponseEntity.status(eR.getStatusCode()).body(eR);
+		}
+
+		return empResponse;
 
 	}
 
 	@DeleteMapping(value = "/deleteEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String deleteEmployee(@RequestBody EmployeePojo request) {
+	public ResponseEntity<Object> deleteEmployee(@RequestBody EmployeePojo request) {
 
-		service.deleteEmployee(request.getId());
-		return "Employee Deleted Successfully";
+		ResponseEntity<Object> empResponse = null;
+
+		EmployeePojo employee = null;
+		try {
+			employee = service.deleteEmployee(request.getId());
+			;
+			String msg = "successfully deleted";
+			empResponse = ResponseEntity.status(200).body(msg);
+
+		} catch (EmployeeNotFoundException e) {
+			ExceptionResponse eR = new ExceptionResponse();
+			eR.setStatusCode(404);
+			eR.setExceptionMessage(e.getMessage());
+			empResponse = ResponseEntity.status(eR.getStatusCode()).body(eR);
+		}
+
+		return empResponse;
 
 	}
 
