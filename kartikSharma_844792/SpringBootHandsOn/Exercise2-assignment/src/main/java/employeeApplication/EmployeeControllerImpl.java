@@ -62,6 +62,7 @@ public class EmployeeControllerImpl implements EmployeeController {
 	}
 
 	// to change/update use put mapping.
+	@SuppressWarnings("unused")
 	@PutMapping(value = "/updateEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> updateEmployee(@RequestBody EmployeePojo request) {
 
@@ -84,6 +85,7 @@ public class EmployeeControllerImpl implements EmployeeController {
 
 	}
 
+	@SuppressWarnings("unused")
 	@DeleteMapping(value = "/deleteEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> deleteEmployee(@RequestBody EmployeePojo request) {
 

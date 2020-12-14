@@ -43,9 +43,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public EmployeePojo deleteEmployee(Integer id) throws EmployeeNotFoundException {
 
+	
 		Optional<EmployeePojo> employeecheck = findEmployee(id);
 
 		dao.deleteEmployee(id);
